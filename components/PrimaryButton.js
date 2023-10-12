@@ -7,7 +7,7 @@ function PrimaryButton({ children }) {
                 ({ pressed }) => pressed ? [styles.buttonInnerContainer, styles.Pressed] : styles.buttonInnerContainer}
                 android_ripple={{ color: '#640233' }}>
 
-                <Text style={buttonText}>{children}</Text>
+                <Text style={styles.buttonText}>{children}</Text>
 
             </Pressable>
         </View>
