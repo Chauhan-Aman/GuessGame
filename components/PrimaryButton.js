@@ -1,11 +1,13 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 
-function PrimaryButton({ children }) {
+function PrimaryButton({ children, onPress }) {
+
     return (
         <View style={styles.buttonOuterContainer}>
             <Pressable style={
                 ({ pressed }) => pressed ? [styles.buttonInnerContainer, styles.Pressed] : styles.buttonInnerContainer}
-                android_ripple={{ color: '#640233' }}>
+                android_ripple={{ color: '#640233' }}
+                onPress={onPress}>
 
                 <Text style={styles.buttonText}>{children}</Text>
 
@@ -36,5 +38,3 @@ const styles = StyleSheet.create({
 });
 
 export default PrimaryButton;
-
-// {pressed} in Pressable is default parameter which it return on press operation and using ternary operator we can perform different stylings and by using [] we can perform two styling objects on single tag 
