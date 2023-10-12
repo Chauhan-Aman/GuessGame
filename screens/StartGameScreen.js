@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
 
 export default StartGameScreen;
 
-// View had default flex property we use view and bind button inside it to make sure that the button will take alignItems: 'stretch' property and flex: 1 to take the size of screen accordingly
+// View had default flex property we use view and bind button inside it to make sure that the button will take alignItems: 'stretch' property and flex: 1 to take the size of screen accordingly (default it takes space as needed to display component)
