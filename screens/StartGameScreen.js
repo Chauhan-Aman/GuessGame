@@ -21,7 +21,8 @@ function StartGameScreen({ onPickNumber }) {
     const chosenNumber = parseInt(enteredNumber);  // converting default string input in textinput to int
 
     if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {   // isNaN - Is not a number
-      Alert.alert('Invalid number!',                                                   // Heading
+      Alert.alert(
+        'Invalid number!',                                                   // Heading
         'Number has to be a number between 1 and 99',                                  // Message
         [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler }]           // Button
       );
@@ -34,7 +35,7 @@ function StartGameScreen({ onPickNumber }) {
   return (
     <View style={styles.inputContainer}>
 
-      <TextInput style={styles.numberInput} maxLength={2} keyboardType="number-pad" autoCapitalize="none" autoCorrect={false} value={enteredNumber} onChange={numberInputHandler} />
+      <TextInput style={styles.numberInput} maxLength={2} keyboardType="number-pad" autoCapitalize="none" autoCorrect={false} value={enteredNumber} onChangeText={numberInputHandler} />
 
       <View style={styles.buttonsContainer}>
 
