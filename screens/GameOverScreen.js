@@ -3,7 +3,7 @@ import { TextInput, View } from "react-native";
 function GameOverScreen() {
   return (
     <View>
-        <TextInput />
+      <TextInput />
     </View>
   )
 }
