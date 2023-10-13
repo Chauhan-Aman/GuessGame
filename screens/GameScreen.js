@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { View, StyleSheet, Alert } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
 
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
@@ -22,8 +23,7 @@ let maxBoundary = 100;
 
 function GameScreen({ userNumber, onGameOver }) {
 
-    const initialGuess = generateRandomBetween(1, 100, userNumber);  // Used 1,100 instead of min and maxBoundary bcoz component function is executed first(before useEffect and doesnot move to gameover screen on correct guess instead it gives error on correct guess), so we hard code the values to avoid the error(by not initializing with updated min and maXBoundary each time.loop gets executed) 
-
+    const initialGuess = generateRandomBetween(1, 100, userNumber);
     const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
     useEffect(() => {                               // Runs after the component function is executed.
@@ -60,10 +60,10 @@ function GameScreen({ userNumber, onGameOver }) {
 
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonContainer}>
-                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>-</PrimaryButton>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}><Ionicons name="md-remove" size={24} color="white" /></PrimaryButton> 
                     </View>
                     <View style={styles.buttonContainer}>
-                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>+</PrimaryButton>
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}><Ionicons name="md-add" size={24} color="white" /></PrimaryButton> 
                     </View>
                 </View>
 
@@ -79,7 +79,7 @@ export default GameScreen;
 
 const styles = StyleSheet.create({
     screen: {
-        marginTop:36,
+        marginTop: 36,
         flex: 1,
         padding: 24,
     },
