@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
 
 import Title from "../components/ui/Title";
@@ -18,10 +18,17 @@ function generateRandomBetween(min, max, exclude) {
 let minBoundary = 1;
 let maxBoundary = 100;
 
-function GameScreen({ userNumber }) {
+function GameScreen({ userNumber, onGameOver }) {
 
-    const initialGuess = generateRandomBetween(minBoundary, maxBoundary, userNumber);
+    const initialGuess = generateRandomBetween(1, 100, userNumber);  // Used 1,100 instead of min and maxBoundary bcoz component function is executed first(before useEffect and doesnot move to gameover screen on correct guess instead it gives error on correct guess), so we hard code the values to avoid the error(by not initializing with updated min and maXBoundary each time.loop gets executed) 
+    
     const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+    useEffect(() => {                               // Runs after the component function is executed.
+        if (currentGuess === userNumber) {
+            onGameOver();
+        }
+    }, [currentGuess, userNumber, onGameOver]);  // whenever any of the dependencies changes the useffect will be re-executed
 
     function nextGuessHandler(direction) {  // direction => 'lower' , 'greater'
 
