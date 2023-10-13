@@ -32,6 +32,11 @@ function GameScreen({ userNumber, onGameOver }) {
         }
     }, [currentGuess, userNumber, onGameOver]);  // whenever any of the dependencies changes the useffect will be re-executed
 
+    useEffect(() => {
+        minBoundary = 1;
+        maxBoundary = 100;
+    }, [])  // Empty array runs useEffect whenever GameScreen(main Function) re renders (Not works when ui is already on screen and some updation occurs)
+
     function nextGuessHandler(direction) {  // direction => 'lower' , 'greater'
 
         if ((direction === 'lower' && currentGuess < userNumber) || (direction === 'greater' && currentGuess > userNumber)) {
@@ -60,10 +65,10 @@ function GameScreen({ userNumber, onGameOver }) {
 
                 <View style={styles.buttonsContainer}>
                     <View style={styles.buttonContainer}>
-                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}><Ionicons name="md-remove" size={24} color="white" /></PrimaryButton> 
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}><Ionicons name="md-remove" size={24} color="white" /></PrimaryButton>
                     </View>
                     <View style={styles.buttonContainer}>
-                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}><Ionicons name="md-add" size={24} color="white" /></PrimaryButton> 
+                        <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}><Ionicons name="md-add" size={24} color="white" /></PrimaryButton>
                     </View>
                 </View>
 
