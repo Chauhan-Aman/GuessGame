@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, ImageBackground } from 'react-native';
+import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'
 
 import StartGameScreen from './screens/StartGameScreen';
@@ -25,7 +25,7 @@ export default function App() {
       <ImageBackground source={require('./assets/images/background.png')}
         resizeMode='cover' style={styles.rootScreen} imageStyle={styles.backgroundImage}>
 
-        {screen}
+        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
 
       </ImageBackground>
 
@@ -41,3 +41,5 @@ const styles = StyleSheet.create({
     opacity: 0.15,
   }
 });
+
+// SafeAreaView - To make the top of app below camera section(notch)
